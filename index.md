@@ -6,7 +6,7 @@
   
   [Click Here](Files\Homework1\Homework1.ipynb) to download the homework as a .ipynb notebook file.
   
-  [Click Here](Files\Homework1) to access the data.
+  [Click Here](Files\Homework1\Data.zip) to access the data.
     
 ### Homework 2
 
