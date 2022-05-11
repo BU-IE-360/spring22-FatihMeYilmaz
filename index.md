@@ -9,6 +9,6 @@
   [Click Here](Files\Homework1\Data.zip) to access the data.
     
 ### Homework 2
-  [Here](Files\Homework2\Homework2.html) is my Homework 1 .html file using R for the sales of Unleaded Gasoline (Quarterly )prediction.
+  [Here](Files\Homework2\Homework2.html) is my Homework 2 .html file using R for the sales of Unleaded Gasoline (Quarterly )prediction.
   
   [Click Here](Files\Homework2\Homework2.ipynb) to download the homework as a .ipynb notebook file.
