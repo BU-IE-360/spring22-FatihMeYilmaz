@@ -1,7 +1,7 @@
 ---
 title: "IE360 Project Report Group8"
 author: "Mustafa Comert, Fatih Mehmet Yilmaz and Kutay Ilmen Aytekin"
-date: "07 06 2022"
+date: "07/06/2022"
 output: 
   html_document :
     code_folding : "hide"
@@ -67,7 +67,7 @@ statistics <- function(actual, forecasted){
 
 In this project, we are asked to predict hourly solar power production of KIVANC 2 GES between May 25 - June 3, 2022. Every prediction consists of 24 hours of the next day. The available data used in prediction process include production information of previous day, and independent weather variables such as temperature, relative humidity, downward shortwave radiation flux and cloud cover. Weather variables are given for 9 coordinates around solar power plant.
 
-Firstly, it is a good idea to check our data visually before constructing prediction models. Below is the plot of the daily total production for available data to examine the general behaviour of the production.
+Firstly, it is a good idea to check our data visually before constructing prediction models. Below is the plot of the daily total production for available data to examine the general behavior of the production.
 
 ```{r Daily Total Production, warning=FALSE, message=FALSE}
 #convert hourly data to daily data
@@ -314,7 +314,7 @@ control_data_1week_means_capacity=control_data_1week_means_capacity[order(dateti
 # model 3 with daily max in a moving manner to normalize with means of locations
 lm_model3=lm(normalized_production~.,train_data_means_capacity[,-c('date','rolling_max','production','max_prod'),with=F])
 summary(lm_model3)
-#checkresiduals(lm_model3)
+checkresiduals(lm_model3)
 lm_forecast_test=predict(lm_model3,test_data_means_capacity)
 test_data_means_capacity[,forecasted3:=as.numeric(lm_forecast_test)*rolling_max]
 lm_forecast_control=predict(lm_model3,control_data_means_capacity)
@@ -367,7 +367,7 @@ control_data_1week_means_capacity$lag72 = train_data_means_capacity$lag72[(nrow(
 # train with all variables
 lm_model5=lm(normalized_production~.,train_data_means_capacity[,-c('date','rolling_max','production','max_prod'),with=F])
 summary(lm_model5)
-#checkresiduals(lm_model5)
+checkresiduals(lm_model5)
 lm_forecast_test=predict(lm_model5,test_data_means_capacity)
 test_data_means_capacity[,forecasted5:=as.numeric(lm_forecast_test)*rolling_max]
 lm_forecast_control=predict(lm_model5,control_data_means_capacity)
@@ -414,7 +414,7 @@ control_data_1week_means_capacity$differ1 <- train_data_means_capacity$differ1[(
 
 lm_model6=lm(normalized_production~.,train_data_means_capacity[,-c('date','rolling_max','production','max_prod'),with=F])
 summary(lm_model6)
-#checkresiduals(lm_model6)
+checkresiduals(lm_model6)
 lm_forecast_test=predict(lm_model6,test_data_means_capacity)
 test_data_means_capacity[,forecasted6:=as.numeric(lm_forecast_test)*rolling_max]
 lm_forecast_control=predict(lm_model6,control_data_means_capacity)
@@ -461,7 +461,7 @@ control_data_1week_means_capacity$differ24 <- train_data_means_capacity$differ24
 
 lm_model7=lm(normalized_production~.,train_data_means_capacity[,-c('date','rolling_max','production','max_prod'),with=F])
 summary(lm_model7)
-#checkresiduals(lm_model7)
+checkresiduals(lm_model7)
 lm_forecast_test=predict(lm_model7,test_data_means_capacity)
 test_data_means_capacity[,forecasted7:=as.numeric(lm_forecast_test)*rolling_max]
 lm_forecast_control=predict(lm_model7,control_data_means_capacity)
@@ -525,7 +525,7 @@ control_data_1week_means_capacity[,outlier_great:=as.numeric(residuals>quant95)]
 
 lm_model8=lm(normalized_production~.,train_data_means_capacity[,-c('date','rolling_max','production','max_prod','quant5', 'quant95', 'residuals'),with=F])
 summary(lm_model8)
-#checkresiduals(lm_model8)
+checkresiduals(lm_model8)
 lm_forecast_test=predict(lm_model8,test_data_means_capacity)
 test_data_means_capacity[,forecasted8:=as.numeric(lm_forecast_test)*rolling_max]
 lm_forecast_control=predict(lm_model8,control_data_means_capacity)
@@ -668,15 +668,17 @@ Therefore, even though we reached a better model than th first model that is use
 
 * The R Markdown of this report is [here][rmd]. (.Rmd file)
 * The R script used for different model trials and making submissions is [here][script]. (.R file)
+* Data file used in the project is [here][data]. (.zip file)
 
 # 7 - References
 
-Panjwani, Manoj & Narejo, G.B.. (2014). Effect of humidity on the efficiency of solar cell (photovoltaic). Int J Eng Res General Sci. 2. 499-503. 
+Panjwani, Manoj & Narejo, G.B.. (2014). Effect of humidity on the efficiency of solar cell (Photovoltaic). Int J Eng Res General Sci. 2. 499-503. 
 
 Amusan J. A. & Otokunefor E.B.(2019) The Effect of Cloud on the Output Performance of a Solar Module. IJESC. 9.2. 19665,19671.
 
 <!-- Links -->
 [humidity]: https://www.researchgate.net/publication/309104096_Effect_of_humidity_on_the_efficiency_of_solar_cell_photovoltaic "Effect of Humidity on the efficiency of solar cell photovoltaic"
 [cloud]: https://ijesc.org/upload/019a8ade10f861b75fa36c98a02d98b9.The%20Effect%20of%20Cloud%20on%20the%20Output%20Performance%20of%20a%20Solar%20Module.pdf "The effect of cloud on the output performance of a solar module"
-[rmd]:
-[script]:
+[rmd]: https://github.com/BU-IE-360/spring22-FatihMehmetYilmaz/blob/gh-pages/Files/Project/IE360-Project%20Report-Group8.Rmd 
+[script]: https://github.com/BU-IE-360/spring22-FatihMehmetYilmaz/blob/gh-pages/Files/Project/ProjectGroup8.R
+[data]: https://github.com/BU-IE-360/spring22-FatihMehmetYilmaz/blob/gh-pages/Files/Project/2022-06-07_production_weather.zip
